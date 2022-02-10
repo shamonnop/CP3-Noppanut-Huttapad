@@ -26,16 +26,18 @@ def menutSelect(userSelect):
 		elif userSelect == 2:
 			return priceCalculate()
 		else:
-			print("Done")
+			print("Try again")
+			showMenu()
 	else:
 		print("Done")
+		exit()
 
 def vatCalculate(totalPrice):
 	vat = 7/100
 	print("Vat", "{:.0%}".format(vat), ": ", "{:,.2f}".format(totalPrice*vat))
 	result = totalPrice*(1+vat)
 	print("Total Vat Incl. : ", "{:,.2f}".format(result))
-	return result
+	return result, showMenu()
 
 
 def priceCalculate():
@@ -45,7 +47,7 @@ def priceCalculate():
 		x = float(input("Item No." + str(i) + " Price : "))
 		totalPrice += x
 	print("Total : ", "{:,.2f}".format(totalPrice))
-	return vatCalculate(totalPrice)
+	return vatCalculate(totalPrice), showMenu()
 
 
 login()
